@@ -1,0 +1,37 @@
+﻿@page "/counterIncrement"
+@using BlazorState.State.Models
+@rendermode InteractiveServer
+
+@inject CounterNumericState CounterNumericState
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @CounterNumericState.CounterNumeric</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me to increment</button>
+
+@code {
+
+    private void IncrementCount()
+    {
+        CounterNumericState.CounterNumeric++;
+    }
+
+    protected override void OnInitialized()
+    {
+        CounterNumericState.OnChange += OnStateChange;
+    }
+
+    private async Task OnStateChange()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CounterNumericState.OnChange -= OnStateChange;
+    }
+
+}

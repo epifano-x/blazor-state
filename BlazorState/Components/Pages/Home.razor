@@ -2,6 +2,62 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<select id="language-selector" onchange="changeLanguage()">
+    <option value="pt">Português</option>
+    <option value="en">English</option>
+    <option value="es">Español</option>
+</select>
+<br />
+<div id="content-pt">
+    <h1>Gerenciamento de Estado no Blazor</h1>
+    <p>Este projeto demonstra o uso de gerenciamento de estado no Blazor usando a abordagem de um estado global acessível entre componentes.</p>
+    <h2>O que foi feito?</h2>
+    <p>Foram criados dois estados globais:</p>
+    <ul>
+        <li><strong>CounterNumericState:</strong> Um estado que gerencia um contador numérico, permitindo incrementar e decrementar seu valor.</li>
+        <li><strong>GenericState:</strong> Um estado genérico para armazenar um ID dinâmico.</li>
+    </ul>
+    <h2>Como funciona?</h2>
+    <p>Os estados foram implementados como classes derivadas de <code>BaseState</code>, que possui um evento <code>OnChange</code> para notificar os componentes quando há alterações no estado.</p>
+    <h2>Conclusão</h2>
+    <p>Essa abordagem facilita a comunicação entre componentes sem a necessidade de passar propriedades diretamente, tornando o código mais modular e escalável.</p>
+</div>
 
-Welcome to your new app.
+<div id="content-en" style="display: none;">
+    <h1>State Management in Blazor</h1>
+    <p>This project demonstrates state management in Blazor using a global state approach accessible between components.</p>
+    <h2>What was done?</h2>
+    <p>Two global states were created:</p>
+    <ul>
+        <li><strong>CounterNumericState:</strong> A state that manages a numeric counter, allowing increment and decrement.</li>
+        <li><strong>GenericState:</strong> A generic state to store a dynamic ID.</li>
+    </ul>
+    <h2>How does it work?</h2>
+    <p>The states were implemented as classes derived from <code>BaseState</code>, which has an <code>OnChange</code> event to notify components when the state changes.</p>
+    <h2>Conclusion</h2>
+    <p>This approach facilitates communication between components without the need to pass properties directly, making the code more modular and scalable.</p>
+</div>
+
+<div id="content-es" style="display: none;">
+    <h1>Gestión de Estado en Blazor</h1>
+    <p>Este proyecto demuestra la gestión de estado en Blazor utilizando un enfoque de estado global accesible entre componentes.</p>
+    <h2>¿Qué se ha hecho?</h2>
+    <p>Se han creado dos estados globales:</p>
+    <ul>
+        <li><strong>CounterNumericState:</strong> Un estado que gestiona un contador numérico, permitiendo incrementarlo y decrementarlo.</li>
+        <li><strong>GenericState:</strong> Un estado genérico para almacenar un ID dinámico.</li>
+    </ul>
+    <h2>¿Cómo funciona?</h2>
+    <p>Los estados se implementaron como clases derivadas de <code>BaseState</code>, que tiene un evento <code>OnChange</code> para notificar a los componentes cuando cambia el estado.</p>
+    <h2>Conclusión</h2>
+    <p>Este enfoque facilita la comunicación entre componentes sin necesidad de pasar propiedades directamente, haciendo el código más modular y escalable.</p>
+</div>
+
+<script>
+    function changeLanguage() {
+        var lang = document.getElementById("language-selector").value;
+        document.getElementById("content-pt").style.display = lang === "pt" ? "block" : "none";
+        document.getElementById("content-en").style.display = lang === "en" ? "block" : "none";
+        document.getElementById("content-es").style.display = lang === "es" ? "block" : "none";
+    }
+</script>

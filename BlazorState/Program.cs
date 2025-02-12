@@ -1,10 +1,16 @@
 using BlazorState.Components;
+using BlazorState.State.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+//SCOPED OBJECT EVENT
+builder.Services.AddScoped<GenericState>();
+builder.Services.AddScoped<CounterNumericState>();
+
 
 var app = builder.Build();
 
